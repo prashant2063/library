@@ -1,0 +1,16 @@
+<section class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>TItle</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>{{book.title}}</td>
+                <td>{{book.authors}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
