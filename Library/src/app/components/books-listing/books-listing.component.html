@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let book of books">
+            <tr *ngFor="let book of books"  (click)="saveBook(book)" role="button">
                 <td>{{book.title}}</td>
                 <td>{{book.authors}}</td>
                 <td>{{book.categories}}</td>

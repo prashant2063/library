@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookService } from 'src/app/services/bookService/book.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class BooksListingComponent implements OnInit {
   entriesInPage: number;
   books;
 
-  constructor(public bookService: BookService) {}
+  constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit(): void {
     this.page = 0;
@@ -40,5 +41,10 @@ export class BooksListingComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  saveBook(book){
+    this.bookService.saveBook(book);
+    this.router.navigateByUrl("bookDetails");
   }
 }
