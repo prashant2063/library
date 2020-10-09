@@ -1,0 +1,41 @@
+<section class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">{{book['title']}}</h5>
+            <div class="card-text">
+                <table class="table table-bordered">
+                    <tr *ngIf="book['shortDescription'] !=null">
+                        <th>Description</th>
+                        <td>{{book['shortDescription']}}</td>
+                    </tr>
+                    <tr *ngIf="book['authors'] != null">
+                        <th>Author</th>
+                        <td>{{book['authors']}}</td>
+                    </tr>
+                    <tr *ngIf="book['categories'] != null">
+                        <th>Category</th>
+                        <td>{{book['categories']}}</td>
+                    </tr>
+                    <tr *ngIf="book['shortDescription'] !=null;else notYetPublished">
+                        <th nowrap>Published On</th>
+                        <td>{{book['publishedDate'] | date}}</td>
+                    </tr>
+                    <ng-template #notYetPublished>
+                        <tr>
+                            <th>Published On</th>
+                            <td>Not Yet Published</td>
+                        </tr>
+                    </ng-template>
+                    <tr *ngIf="book['isbn'] != null">
+                        <th>ISBN</th>
+                        <td>{{book['isbn']}}</td>
+                    </tr>
+                    <tr *ngIf="book['pageCount'] != null">
+                        <th>Pages</th>
+                        <td>{{book['pageCount']}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

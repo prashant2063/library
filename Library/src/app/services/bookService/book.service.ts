@@ -9,13 +9,22 @@ import { environment } from './../../../environments/environment';
 export class BookService {
 
   myServerUrl: String;
+  book;
 
-  constructor(public httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {
     this.myServerUrl = environment.myBaseServerUrl;
   }
 
   getBooks(skip, limit){
     const myUrl = this.myServerUrl+"api/books/";
     return this.httpClient.get(myUrl,{params:{skip,limit}});
+  }
+
+  saveBook(book){
+    this.book = book;
+  }
+
+  getBook(){
+    return this.book;
   }
 }
