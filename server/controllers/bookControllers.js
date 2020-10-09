@@ -18,7 +18,9 @@ function getBooks(request, response) {
                     response.send("not able to connect to collection")
                 }
                 else{
-                    coll.find({}).toArray((err, res)=>{
+                    let skip = parseInt(request.query.skip);
+                    let limit = parseInt(request.query.limit);
+                    coll.find({}).skip(skip).limit(limit).toArray((err, res)=>{
                         response.send(res);
                     })
                 }

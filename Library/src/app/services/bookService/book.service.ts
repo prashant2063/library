@@ -14,8 +14,8 @@ export class BookService {
     this.myServerUrl = environment.myBaseServerUrl;
   }
 
-  getBooks(){
+  getBooks(skip, limit){
     const myUrl = this.myServerUrl+"api/books/";
-    return this.httpClient.get(myUrl);
+    return this.httpClient.get(myUrl,{params:{skip,limit}});
   }
 }

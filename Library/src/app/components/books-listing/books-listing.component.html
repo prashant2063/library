@@ -4,13 +4,31 @@
             <tr>
                 <th>TItle</th>
                 <th>Author</th>
+                <th>Category</th>
+                <th>ISBN</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let book of books">
                 <td>{{book.title}}</td>
                 <td>{{book.authors}}</td>
+                <td>{{book.categories}}</td>
+                <td>{{book.isbn}}</td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan=4>
+                    <div class="d-flex justify-content-around">
+                        <button class="btn btn-primary" (click)="previousBtnCLickHandler()" [disabled]="page==0">
+                            Pervious
+                        </button>
+                        <button class="btn btn-primary" (click)="nextBtnClickHandler()" [disabled]="books.length < entriesInPage">
+                            Next
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </section>
