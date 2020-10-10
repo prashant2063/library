@@ -6,14 +6,19 @@
                 <th>Author</th>
                 <th>Category</th>
                 <th>ISBN</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let book of books"  (click)="saveBook(book)" role="button">
-                <td>{{book.title}}</td>
-                <td>{{book.authors}}</td>
-                <td>{{book.categories}}</td>
-                <td>{{book.isbn}}</td>
+            <tr *ngFor="let book of books">
+                <td (click)="saveBook(book)" role="button">{{book.title}}</td>
+                <td (click)="saveBook(book)" role="button">{{book.authors}}</td>
+                <td (click)="saveBook(book)" role="button">{{book.categories}}</td>
+                <td (click)="saveBook(book)" role="button">{{book.isbn}}</td>
+                <td class="d-flex justify-content-between">
+                    <span role="button" (click)="editBook(book)" class="fa fa-pencil-square-o"></span>
+                    <span role="button" (click)="deleteBook(book._id)" class="fa fa-trash"></span>
+                </td>
             </tr>
         </tbody>
         <tfoot>
@@ -23,7 +28,7 @@
                         <button class="btn btn-primary" (click)="previousBtnCLickHandler()" [disabled]="page==0">
                             Pervious
                         </button>
-                        <button class="btn btn-primary" (click)="nextBtnClickHandler()" [disabled]="books && books.length < entriesInPage">
+                        <button class="btn btn-primary" (click)="nextBtnClickHandler()" [disabled]="!books || (books && books.length < entriesInPage)">
                             Next
                         </button>
                     </div>

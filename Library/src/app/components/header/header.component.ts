@@ -11,7 +11,10 @@ export class HeaderComponent implements OnInit {
 
   user: Object;
 
-  constructor(private authService: AuthService, public router: Router) { }
+  constructor(private authService: AuthService, public router: Router) { 
+    if(!this.authService.getToken())
+      router.navigateByUrl("/");
+  }
 
   ngOnInit(): void {
     this.user = this.authService.getToken();

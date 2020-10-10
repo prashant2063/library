@@ -47,4 +47,25 @@ export class BooksListingComponent implements OnInit {
     this.bookService.saveBook(book);
     this.router.navigateByUrl("bookDetails");
   }
+
+  editBook(book){
+    console.log(book);
+    return;
+  }
+
+  deleteBook(_id){
+    console.log(_id);
+    this.bookService.deleteBook(_id)
+    .subscribe(
+      (data)=>{
+        const pos = this.books.findIndex((book)=> book._id == data['value']['_id']);
+        if(pos >= 0){
+          this.books.splice(pos,1);
+        }
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
+  }
 }
