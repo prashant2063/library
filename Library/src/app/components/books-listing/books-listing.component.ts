@@ -35,26 +35,25 @@ export class BooksListingComponent implements OnInit {
     this.bookService.getBooks(skip, limit)
     .subscribe(
       (data)=>{
-        // console.log(data)
         this.books = data;
       },(err)=>{
-        // console.log(err);
+        console.log(err);
       }
     );
   }
 
   saveBook(book){
     this.bookService.saveBook(book);
-    this.router.navigateByUrl("bookDetails");
+    this.router.navigateByUrl("/bookDetails");
   }
 
   editBook(book){
-    console.log(book);
+    this.bookService.saveBook(book);
+    this.router.navigateByUrl("/editBook")
     return;
   }
 
   deleteBook(_id){
-    console.log(_id);
     this.bookService.deleteBook(_id)
     .subscribe(
       (data)=>{

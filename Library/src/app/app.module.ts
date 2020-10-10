@@ -11,7 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { BookService } from './services/bookService/book.service';
 import { AuthService } from './services/auth/auth.service';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditBookComponent } from './components/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,14 @@ import { FormsModule } from '@angular/forms';
     BooksListingComponent,
     LoginComponent,
     BookDetailsComponent,
+    EditBookComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     BookService,
