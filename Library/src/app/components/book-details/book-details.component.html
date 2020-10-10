@@ -4,19 +4,19 @@
             <h5 class="card-title mb-4">{{book['title']}}</h5>
             <div class="card-text">
                 <table class="table table-bordered">
-                    <tr *ngIf="book['shortDescription'] !=null">
+                    <tr *ngIf="book['shortDescription']">
                         <th>Description</th>
                         <td>{{book['shortDescription']}}</td>
                     </tr>
-                    <tr *ngIf="book['authors'] != null">
+                    <tr *ngIf="book['authors']">
                         <th>Author</th>
                         <td>{{book['authors']}}</td>
                     </tr>
-                    <tr *ngIf="book['categories'] != null">
+                    <tr *ngIf="book['categories']">
                         <th>Category</th>
                         <td>{{book['categories']}}</td>
                     </tr>
-                    <tr *ngIf="book['shortDescription'] !=null;else notYetPublished">
+                    <tr *ngIf="book['shortDescription'];else notYetPublished">
                         <th nowrap>Published On</th>
                         <td>{{book['publishedDate'] | date}}</td>
                     </tr>
@@ -26,11 +26,11 @@
                             <td>Not Yet Published</td>
                         </tr>
                     </ng-template>
-                    <tr *ngIf="book['isbn'] != null">
+                    <tr *ngIf="book['isbn']">
                         <th>ISBN</th>
                         <td>{{book['isbn']}}</td>
                     </tr>
-                    <tr *ngIf="book['pageCount'] != null">
+                    <tr *ngIf="book['pageCount']">
                         <th>Pages</th>
                         <td>{{book['pageCount']}}</td>
                     </tr>

@@ -10,25 +10,39 @@ import { environment } from './../../../environments/environment';
 })
 export class BookService {
 
-  myServerUrl: String;
-  book;
+  private myServerUrl: String;
+  private book: Object;
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) {
     this.myServerUrl = environment.myBaseServerUrl;
   }
 
   getBooks(skip, limit){
-    const myUrl = this.myServerUrl+"api/books/";
+    const myUrl = this.myServerUrl+"api/books/get";
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer '+this.authService.getToken());
     return this.httpClient.get(myUrl,{params:{skip,limit}, headers});
   }
 
   deleteBook(_id){
-    const myUrl = this.myServerUrl+"api/books/deleteBook";
+    const myUrl = this.myServerUrl+"api/books/delete";
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer '+this.authService.getToken());
     return this.httpClient.delete(myUrl,{params:{_id}, headers});
+  }
+
+  updateBook(book){
+    const myUrl = this.myServerUrl+"api/books/update";
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer '+this.authService.getToken());
+    this.httpClient.put(myUrl,book,{headers})
+    .subscribe(
+      (data)=>{
+        this.router.navigateByUrl("/books");
+      },(err)=>{
+        console.log(err);
+      }
+    );
   }
 
   saveBook(book){
