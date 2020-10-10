@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {
     if(this.authService.getToken())
-      router.navigateByUrl("/book")
+      this.router.navigateByUrl("/books")
   }
 
   ngOnInit(): void {
