@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from './../../../environments/environment';
@@ -19,7 +19,9 @@ export class AuthService {
 
   authenticate(cred){
     const myUrl = this.myServerUrl+"api/user/authenticate";
-    this.httpClient.post(myUrl,cred)
+    let headers = new HttpHeaders();
+    headers = headers.append('cred',JSON.stringify(cred));
+    this.httpClient.get(myUrl,{headers})
     .subscribe(
       (data)=>{
         this.token = data['token']
@@ -34,5 +36,9 @@ export class AuthService {
 
   getToken(){
     return this.token;
+  }
+
+  setToken(token){
+    this.token = token;
   }
 }

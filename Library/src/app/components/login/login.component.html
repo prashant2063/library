@@ -1,5 +1,5 @@
-<section>
-    <div class="row">
+<section class="container-fluid bg-info min-vh-100">
+    <div class="row min-vh-100 align-items-center">
         <div class="offset-md-4 col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -27,7 +27,9 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+                        </div>
                     </form>
                 </div>
             </div>

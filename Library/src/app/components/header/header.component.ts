@@ -20,4 +20,9 @@ export class HeaderComponent implements OnInit {
     this.user = this.authService.getToken();
   }
 
+  logout(){
+    this.authService.setToken(null);
+    localStorage.clear();
+    this.router.navigateByUrl("/")
+  }
 }

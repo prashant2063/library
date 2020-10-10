@@ -13,6 +13,7 @@ import { AuthService } from './services/auth/auth.service';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditBookComponent } from './components/edit-book/edit-book.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { EditBookComponent } from './components/edit-book/edit-book.component';
     LoginComponent,
     BookDetailsComponent,
     EditBookComponent,
+    AddBookComponent,
   ],
   imports: [
     BrowserModule,

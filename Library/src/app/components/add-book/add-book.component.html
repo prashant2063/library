@@ -1,0 +1,127 @@
+<section class="container">
+    <div class="card">
+        <div class="card-header">
+            Edit Book
+        </div>
+        <div class="card-body">
+            <form [formGroup]="bookForm" (ngSubmit)="add()">
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Title
+                        </div>
+                        <div class="col-md-8">
+                            <input id="title" class="form-control" type="text" name="title" formControlName="title"
+                                autocomplete="off">
+                            <div *ngIf="bookForm.get('title').errors?.required && bookForm.get('title').touched"
+                                class="text-danger small">
+                                Title is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Description
+                        </div>
+                        <div class="col-md-8">
+                            <textarea id="shortDescription" class="form-control" name="shortDescription" rows="5"
+                                formControlName="shortDescription" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Authors
+                        </div>
+                        <div class="col-md-8">
+                            <input id="authors" class="form-control" type="text" name="authors"
+                                formControlName="authors" autocomplete="off">
+                            <div *ngIf="bookForm.get('authors').errors?.required && bookForm.get('authors').touched"
+                                class="text-danger small">
+                                Enter atleast one author
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Categories
+                        </div>
+                        <div class="col-md-8">
+                            <input id="categories" class="form-control" type="text" name="categories"
+                                formControlName="categories" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Published On
+                        </div>
+                        <div class="col-md-8">
+                            <input id="publishedDate" class="form-control" type="date" name="publishedDate"
+                                formControlName="publishedDate" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            ISBN
+                        </div>
+                        <div class="col-md-8">
+                            <input id="isbn" class="form-control" type="text" name="isbn" formControlName="isbn"
+                                autocomplete="off">
+                            <div *ngIf="bookForm.get('isbn').errors?.required && bookForm.get('isbn').touched; else isbnFormat"
+                                class="text-danger small">
+                                ISBN is Required
+                            </div>
+                            <ng-template #isbnFormat>
+                                <div *ngIf="bookForm.get('isbn').errors?.pattern && bookForm.get('isbn').touched"
+                                    class="text-danger small">
+                                    ISBN should be a number
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Pages
+                        </div>
+                        <div class="col-md-8">
+                            <input id="pageCount" class="form-control" type="text" name="pageCount"
+                                formControlName="pageCount" autocomplete="off">
+                            <div *ngIf="bookForm.get('pageCount').errors?.required && bookForm.get('pageCount').touched; else pageCountFormat"
+                                class="text-danger small">
+                                Page Count is Required
+                            </div>
+                            <ng-template #pageCountFormat>
+                                <div *ngIf="bookForm.get('pageCount').errors?.pattern && bookForm.get('pageCount').touched"
+                                    class="text-danger small">
+                                    Page Count should be a number
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid">Add</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>

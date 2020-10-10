@@ -45,6 +45,20 @@ export class BookService {
     );
   }
 
+  addBook(book){
+    const myUrl = this.myServerUrl+"api/books/add";
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer '+this.authService.getToken());
+    this.httpClient.post(myUrl, book, {headers})
+    .subscribe(
+      (data)=>{
+        this.router.navigateByUrl("/books");
+      },(err)=>{
+        console.log(err);
+      }
+    );
+  }
+
   saveBook(book){
     this.book = book;
   }
