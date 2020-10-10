@@ -1,1 +1,36 @@
-<p>login works!</p>
+<section>
+    <div class="row">
+        <div class="offset-md-4 col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        Login
+                    </h5>
+                    <form #loginForm="ngForm" (ngSubmit)="login()">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" required
+                                [(ngModel)]="loginFormData.username" name="username" #username="ngModel"
+                                autocomplete="off">
+                            <div *ngIf="username.invalid && username.touched">
+                                <small class="text-danger">Username is required</small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control" id="password" required
+                                [(ngModel)]="loginFormData.password" name="password" #password="ngModel" autocomplete="off">
+                            <div *ngIf="password.invalid && password.touched">
+                                <small class="text-danger">Password is required</small>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

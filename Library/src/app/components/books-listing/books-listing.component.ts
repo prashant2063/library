@@ -35,10 +35,10 @@ export class BooksListingComponent implements OnInit {
     this.bookService.getBooks(skip, limit)
     .subscribe(
       (data)=>{
-        console.log(data)
+        // console.log(data)
         this.books = data;
       },(err)=>{
-        console.log(err);
+        // console.log(err);
       }
     );
   }

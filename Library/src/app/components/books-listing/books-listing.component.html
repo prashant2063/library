@@ -23,7 +23,7 @@
                         <button class="btn btn-primary" (click)="previousBtnCLickHandler()" [disabled]="page==0">
                             Pervious
                         </button>
-                        <button class="btn btn-primary" (click)="nextBtnClickHandler()" [disabled]="books.length < entriesInPage">
+                        <button class="btn btn-primary" (click)="nextBtnClickHandler()" [disabled]="books && books.length < entriesInPage">
                             Next
                         </button>
                     </div>
