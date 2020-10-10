@@ -1,7 +1,9 @@
 const mongoClient = require("mongodb").MongoClient;
-const db = require("./dbConfig");
-const dbUrl = db.dbUrl;
-const dbName = db.dbName;
+const jwt = require("jsonwebtoken");
+
+const keys = require("./../keys");
+const dbUrl = keys.db.dbUrl;
+const dbName = keys.db.dbName;
 const collectionName = "users";
 
 function authenticate(request, response) {
@@ -31,7 +33,9 @@ function authenticate(request, response) {
                         else if(res){
                             console.log("User Found");
                             response.status(200);
-                            response.send(res);
+                            const token = jwt.sign(res, keys.jwtSecret);
+                            // console.log({token});
+                            response.send({token});
                         }
                         else{
                             console.log("User not found");
