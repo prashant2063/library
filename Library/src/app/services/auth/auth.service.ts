@@ -22,8 +22,8 @@ export class AuthService {
     this.httpClient.post(myUrl,cred)
     .subscribe(
       (data)=>{
-        const token = data['token']
-        localStorage.setItem('token', token);
+        this.token = data['token']
+        localStorage.setItem('token', this.token);
         this.router.navigateByUrl('/books');
       },
       (err)=>{
