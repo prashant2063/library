@@ -1,7 +1,8 @@
 const mongoClient = require("mongodb").MongoClient;
-const db = require("./dbConfig");
-const dbUrl = db.dbUrl;
-const dbName = db.dbName;
+
+const keys = require("./../keys");
+const dbUrl = keys.db.dbUrl;
+const dbName = keys.db.dbName;
 const collectionName = "books";
 
 function getBooks(request, response) {

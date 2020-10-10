@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -10,11 +11,10 @@ export class HeaderComponent implements OnInit {
 
   user: Object;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, public router: Router) { }
 
   ngOnInit(): void {
-    this.user = this.authService.getUser();
-    // console.log(this.user);
+    this.user = this.authService.getToken();
   }
 
 }
