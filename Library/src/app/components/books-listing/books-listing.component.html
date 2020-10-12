@@ -1,6 +1,6 @@
 <section class="container">
     <div class="text-right mb-4">
-        <a routerLink="/addBook" class="btn btn-primary">Add New Book</a>
+        <a *ngIf="isAdmin" routerLink="/addBook" class="btn btn-primary">Add New Book</a>
     </div>
     <table class="table table-bordered">
         <thead>
@@ -9,16 +9,16 @@
                 <th>Author</th>
                 <th>Category</th>
                 <th>ISBN</th>
-                <th>Action</th>
+                <th *ngIf="isAdmin">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let book of books">
-                <td (click)="saveBook(book)" role="button">{{book.title}}</td>
-                <td (click)="saveBook(book)" role="button">{{book.authors}}</td>
-                <td (click)="saveBook(book)" role="button">{{book.categories}}</td>
-                <td (click)="saveBook(book)" role="button">{{book.isbn}}</td>
-                <td class="d-flex justify-content-between">
+                <td (click)="saveBook(book)" role="button">{{book['title']}}</td>
+                <td (click)="saveBook(book)" role="button">{{book['authors']}}</td>
+                <td (click)="saveBook(book)" role="button">{{book['categories']}}</td>
+                <td (click)="saveBook(book)" role="button">{{book['isbn']}}</td>
+                <td *ngIf="isAdmin" class="d-flex justify-content-between">
                     <span role="button" (click)="editBook(book)" class="fa fa-pencil-square-o"></span>
                     <span role="button" (click)="deleteBook(book._id)" class="fa fa-trash"></span>
                 </td>

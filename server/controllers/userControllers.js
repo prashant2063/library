@@ -33,7 +33,7 @@ function authenticate(request, response) {
 
                             response.status(200);
                             const token = jwt.sign(res, keys.jwtSecret);
-                            response.send({ token });
+                            response.send({ token: token, role : res['role'] });
                         }
                         else {
 

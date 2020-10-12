@@ -14,10 +14,7 @@ export class LoginComponent implements OnInit {
     password: ""
   }
 
-  constructor(private authService: AuthService, private router: Router) {
-    if(this.authService.getToken())
-      this.router.navigateByUrl("/books")
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
   }

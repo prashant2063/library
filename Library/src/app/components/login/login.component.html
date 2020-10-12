@@ -20,7 +20,7 @@
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" required
+                            <input type="password" class="form-control" id="password" required
                                 [(ngModel)]="loginFormData.password" name="password" #password="ngModel" autocomplete="off">
                             <div *ngIf="password.invalid && password.touched">
                                 <small class="text-danger">Password is required</small>

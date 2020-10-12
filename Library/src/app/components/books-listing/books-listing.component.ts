@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { BookService } from 'src/app/services/bookService/book.service';
 
 @Component({
@@ -11,8 +12,11 @@ export class BooksListingComponent implements OnInit {
   page: number;
   entriesInPage: number;
   books;
+  isAdmin: boolean;
 
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(private bookService: BookService, private router: Router, private authSevice: AuthService) {
+    this.isAdmin = (this.authSevice.getRole() == "admin")?true:false;
+  }
 
   ngOnInit(): void {
     this.page = 0;

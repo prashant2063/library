@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from './../../../environments/environment';
-// import * as jwt from 'jsonwebtoken';
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,9 @@ import { environment } from './../../../environments/environment';
 export class AuthService {
 
   private myServerUrl: string;
-  private token;
   
   constructor(private httpClient: HttpClient, private router: Router) { 
     this.myServerUrl = environment.myBaseServerUrl;
-    this.token = localStorage.getItem('token');
   }
 
   authenticate(cred){
@@ -24,8 +22,7 @@ export class AuthService {
     this.httpClient.get(myUrl,{headers})
     .subscribe(
       (data)=>{
-        this.token = data['token']
-        localStorage.setItem('token', this.token);
+        localStorage.setItem('token', data['token']);
         this.router.navigateByUrl('/books');
       },
       (err)=>{
@@ -35,10 +32,12 @@ export class AuthService {
   }
 
   getToken(){
-    return this.token;
+    return localStorage.getItem('token');
   }
 
-  setToken(token){
-    this.token = token;
+  getRole()
+  {
+    const user = jwt_decode(this.getToken());
+    return user['role'];
   }
 }
