@@ -17,6 +17,10 @@ app.use(cors());
 app.use("/api/books",bookRoutes);
 app.use("/api/user",userRoutes);
 
+app.use(express.static(path.join(__dirname, "public", "dist", "Library")))
+app.get('*',(request, response)=>{
+    response.sendFile(path.join(__dirname,"public","dist","Library","index.html"))
+})
 app.listen(PORT, (err)=>{
     if(!err){
         console.log("Running on http://localhost:"+PORT)

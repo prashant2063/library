@@ -10,8 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 
 import { BookService } from './services/bookService/book.service';
 import { AuthService } from './services/auth/auth.service';
-import { AdminGuard } from './guards/admin/admin.guard'
-import { AuthGuard } from './guards/auth/auth.guard'
+import { AdminGuard } from './guards/admin/admin.guard';
+import { AuthGuard } from './guards/auth/auth.guard';
+import { ReferGuard } from './guards/refer/refer.guard'
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditBookComponent } from './components/edit-book/edit-book.component';
@@ -38,7 +39,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     BookService,
     AuthService,
     AdminGuard,
-    AuthGuard
+    AuthGuard,
+    ReferGuard
   ],
   bootstrap: [AppComponent]
 })
