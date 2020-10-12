@@ -5,8 +5,6 @@ const cors = require("cors");
 
 const PORT = 3000;
 
-
-const keys = require("./keys")
 const bookRoutes = require("./routes/bookRoutes");
 const userRoutes = require("./routes/userRoutes");
 
